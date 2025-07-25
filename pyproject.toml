@@ -1,0 +1,37 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "model-serving-poc"
+version = "0.0.0"
+requires-python = ">=3.13"
+dependencies = [
+    "mlflow",
+    "bentoml",
+    "xgboost",
+    "scikit-learn",
+    "umami==0.0.56",
+
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["model_serving_poc"]
+
+[tool.uv]
+
+[tool.uv.sources]
+umami = { index = "artifactory" }
+
+[[tool.uv.index]]
+name = "artifactory"
+url = "https://upwork.jfrog.io/artifactory/api/pypi/pleng-pypi/simple"
+explicit = true
+
+[tool.hatch.env]
+requires = ["hatch-uvenv == 0.3.4"]
+
+[tool.hatch.envs.default]
+type = "uvenv"
+installer = "uv"
+python = "3.10" 
