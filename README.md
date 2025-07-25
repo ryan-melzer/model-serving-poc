@@ -33,7 +33,6 @@ hatch config set dirs.env.uvenv .hatch
 ```
 
 ```sh
-# Create lockfile (first time only)
 uv lock
 ```
 
@@ -48,19 +47,4 @@ or
 ```sh
 hatch shell
 python verify_installation.py
-```
-
-## Commands
-
-```sh
-# Enter environment shell
-hatch shell
-
-# Exit environment
-exit
-```
-
-```sh
-# Run Python scripts without shell
-hatch run python your_script.py
 ```
