@@ -10,7 +10,7 @@ from importlib.metadata import version
 def check_system_packages():
     print("🔍 Checking system packages...")
     
-    required_packages = ["kind", "kubectl", "helm", "istioctl", "jq", "k9s", "hey", "hatch", "uv"]
+    required_packages = ["kind", "kubectl", "helm", "istioctl", "jq", "k9s", "hey", "uv"]
     missing_packages = []
     
     for package in required_packages:
