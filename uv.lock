@@ -1253,6 +1253,7 @@ version = "0.0.0"
 source = { virtual = "." }
 dependencies = [
     { name = "bentoml" },
+    { name = "boto3" },
     { name = "mlflow" },
     { name = "scikit-learn" },
     { name = "umami" },
@@ -1262,9 +1263,10 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "bentoml" },
+    { name = "boto3" },
     { name = "mlflow" },
     { name = "scikit-learn" },
-    { name = "umami", specifier = "==0.0.56", index = "https://upwork.jfrog.io/artifactory/api/pypi/pleng-pypi/simple" },
+    { name = "umami", specifier = "==0.0.58", index = "https://upwork.jfrog.io/artifactory/api/pypi/pleng-pypi/simple" },
     { name = "xgboost" },
 ]
 
@@ -2517,7 +2519,7 @@ wheels = [
 
 [[package]]
 name = "umami"
-version = "0.0.56"
+version = "0.0.58"
 source = { registry = "https://upwork.jfrog.io/artifactory/api/pypi/pleng-pypi/simple" }
 dependencies = [
     { name = "boto3" },
@@ -2537,9 +2539,9 @@ dependencies = [
     { name = "snowflake-connector-python" },
     { name = "wandb" },
 ]
-sdist = { url = "https://upwork.jfrog.io/artifactory/api/pypi/pleng-pypi/umami/0.0.56/umami-0.0.56.tar.gz", hash = "sha256:5d2c3e3d7b26ee4876674e0d17759194bee3d1552d4029efcf730df2d90ceb39" }
+sdist = { url = "https://upwork.jfrog.io/artifactory/api/pypi/pleng-pypi/umami/0.0.58/umami-0.0.58.tar.gz", hash = "sha256:abb67c4659096ab573901d94050b1cdd5ce81617b0e47ad863b3ee2bf8c00133" }
 wheels = [
-    { url = "https://upwork.jfrog.io/artifactory/api/pypi/pleng-pypi/umami/0.0.56/umami-0.0.56-py3-none-any.whl", hash = "sha256:aab1f68f91d8d9dfe2b2969a2ed6a06cb918cb14567281e3d0cf689c91f36e72" },
+    { url = "https://upwork.jfrog.io/artifactory/api/pypi/pleng-pypi/umami/0.0.58/umami-0.0.58-py3-none-any.whl", hash = "sha256:172ce5ebd4d8e5e33d3ef524d81f81ee7ea15dc8d1078bf9e776bb23b5e059f7" },
 ]
 
 [[package]]

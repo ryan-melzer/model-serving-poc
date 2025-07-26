@@ -1,0 +1,29 @@
+services:
+  app:
+    build:
+      context: .
+      secrets:
+        - ARTIFACTORY_USERNAME
+        - ARTIFACTORY_PASSWORD
+    platform: linux/amd64
+    environment:
+      - WANDB_API_KEY
+      # Use direct AWS credentials instead of AWS_PROFILE to avoid profile not found errors
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
+      - AWS_SESSION_TOKEN
+      - AWS_DEFAULT_REGION=us-west-2
+      # Suppress MLflow git warnings
+      - GIT_PYTHON_REFRESH=quiet
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/app
+      - ./artifacts:/app/artifacts
+      - $HOME/.aws:/home/appuser/.aws:ro
+      - /tmp/upwork.pem:/tmp/upwork.pem:ro
+secrets:
+  ARTIFACTORY_USERNAME:
+    environment: ARTIFACTORY_USERNAME
+  ARTIFACTORY_PASSWORD:
+    environment: ARTIFACTORY_PASSWORD

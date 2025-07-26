@@ -5,6 +5,7 @@ Installation verification script for model-serving-poc environment.
 
 import sys
 import shutil
+from pathlib import Path
 from importlib.metadata import version
 
 def check_system_packages():
@@ -60,14 +61,32 @@ def check_python_packages():
         print("Make sure you're running this from within the hatch shell.")
         return False
 
+def check_ssl_certificates():
+    print("\n🔍 Checking SSL certificates...")
+    
+    upwork_cert_path = Path("/tmp/upwork.pem")
+    
+    if upwork_cert_path.exists():
+        print(f"✅ Upwork CA certificate found at {upwork_cert_path}")
+        return True
+    else:
+        print(f"❌ Upwork CA certificate not found at {upwork_cert_path}")
+        print("To fix this, run:")
+        print("aws acm-pca get-certificate-authority-certificate \\")
+        print("  --region us-west-2 \\")
+        print("  --certificate-authority-arn \"arn:aws:acm-pca:us-west-2:208818359839:certificate-authority/05d76ba2-332d-4c73-9dfd-642f35563b2c\" | \\")
+        print("  jq -r '.Certificate,.CertificateChain' > /tmp/upwork.pem")
+        return False
+
 def verify_installation():
     print("\n🔍 Verifying installation...")
     print("-" * 50)
     
     system_ok = check_system_packages()
     python_ok = check_python_packages()
+    ssl_ok = check_ssl_certificates()
     
-    if system_ok and python_ok:
+    if system_ok and python_ok and ssl_ok:
         print("\n🎉 Installation verification successful!")
         print("Your environment is ready to use.\n")
     else:

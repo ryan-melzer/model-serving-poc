@@ -7,7 +7,8 @@ dependencies = [
     "bentoml",
     "xgboost",
     "scikit-learn",
-    "umami==0.0.56",
+    "umami==0.0.58",
+    "boto3",
 ]
 
 [tool.uv.sources]
